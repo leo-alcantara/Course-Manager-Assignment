@@ -1,8 +1,6 @@
 package se.lexicon;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class CollectionPractice {
 
@@ -23,7 +21,7 @@ public class CollectionPractice {
 
         Iterator<String> iterator = daysOfTheWeek.iterator();
 
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             String day = iterator.next();
             System.out.println(day);
         }
@@ -34,8 +32,48 @@ public class CollectionPractice {
         System.out.println(daysOfTheWeek.size());
 
 
-        List<String> subListDaysOfTheWeek = daysOfTheWeek.subList(0,3);
+        List<String> subListDaysOfTheWeek = daysOfTheWeek.subList(0, 3);
         System.out.println(subListDaysOfTheWeek);
+
+        HashSet<String> weekDays = new HashSet<>();
+        weekDays.add("Monday");
+        weekDays.add("Tuesday");
+        weekDays.add("Wednesday");
+        weekDays.add("Thursday");
+        weekDays.add("Friday");
+        weekDays.add("Saturday");
+        weekDays.add("Sunday");
+        //Doesn't keep insertion order
+        System.out.println("weekDays = " + weekDays);
+
+        Object[] weekDaysToArray = weekDays.toArray();
+
+        Arrays.sort(weekDaysToArray);
+
+        System.out.println("weekDaysToArray = " + Arrays.toString(weekDaysToArray));
+
+        HashSet<String> names = new HashSet<>();
+
+        names.add("Leo");
+        names.add("Sophie");
+        names.add("Noelle");
+        names.add("Philip");
+        names.add("Elisabeth");
+        names.add("Göran");
+
+        //List<String> namesList = new ArrayList<>(names);
+
+        TreeSet<String> namesSorted = new TreeSet<>(names);
+        namesSorted.add("Wagner");
+        namesSorted.add("Anna");
+
+        System.out.println("names = " + names);
+        System.out.println("namesSorted = " + namesSorted);
+
+        //Collections.sort(namesSorted);
+
+        Collection<>
+
 
 
     }

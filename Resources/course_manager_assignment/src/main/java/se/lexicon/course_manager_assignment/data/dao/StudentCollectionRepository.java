@@ -18,11 +18,17 @@ public class StudentCollectionRepository implements StudentDao {
 
     @Override
     public Student createStudent(String name, String email, String address) {
+        Student student = new Student(name,email,address);
         return null;
     }
 
     @Override
     public Student findByEmailIgnoreCase(String email) {
+        for(Student student:students){
+            if(student.getEmail().equalsIgnoreCase(email)){
+                return student;
+            }
+        }
         return null;
     }
 

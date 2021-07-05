@@ -21,7 +21,7 @@ Collection Exercises
    Then convert the hashSet to an arrayList. Lastly, manually sort the list in alphabetical order and print it out.
    
 8. Create a new hashSet and populate it with random names. 
-   Lastly, sort the list in alphabetical order using only a Set or a child of Set.
+   Lastly, sort the names in alphabetical order using only a Set or a child of Set.
    
 9. Create a new hashMap of type <Integer,String> and populate it with elements containing 
    an id(Integer), and a car brand(String). Lastly, print out the entire hashMap.
@@ -33,7 +33,8 @@ Collection Exercises
     an id(Integer), and a car brand(String). Lastly, print out only the values.
     
 12. Create a new class and call it Car. Add fields for Id, Brand and Model + getters and setters 
-    Create a new hashMap of type <Integer,Car> and populate it with elements containing an id(Integer), and a car object(Car). Lastly, print out only the car's brand.
+    Create a new hashMap of type <Integer,Car> and populate it with elements containing an id(Integer), 
+    and a car object(Car). Lastly, print out only the car's brand.
 
 Challenges
 1. Create an empty set and populate it with the all the days of the week. 
