@@ -72,7 +72,7 @@ public class CollectionPractice {
 
         //Collections.sort(namesSorted);
 
-        Collection<>
+
 
 
 
