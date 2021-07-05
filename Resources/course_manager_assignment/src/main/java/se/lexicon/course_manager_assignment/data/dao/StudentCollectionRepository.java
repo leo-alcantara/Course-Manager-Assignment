@@ -5,12 +5,14 @@ package se.lexicon.course_manager_assignment.data.dao;
 import se.lexicon.course_manager_assignment.model.Student;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 
 
 public class StudentCollectionRepository implements StudentDao {
 
     private Collection<Student> students;
+    Student student;
 
     public StudentCollectionRepository(Collection<Student> students) {
         this.students = students;
@@ -34,7 +36,7 @@ public class StudentCollectionRepository implements StudentDao {
 
     @Override
     public Collection<Student> findByNameContains(String name) {
-        students.contains();
+        students.contains(student.getName());
         return null;
     }
 
