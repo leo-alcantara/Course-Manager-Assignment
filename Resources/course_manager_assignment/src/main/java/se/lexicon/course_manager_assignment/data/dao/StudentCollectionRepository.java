@@ -34,21 +34,30 @@ public class StudentCollectionRepository implements StudentDao {
 
     @Override
     public Collection<Student> findByNameContains(String name) {
+        students.contains();
         return null;
     }
 
     @Override
     public Student findById(int id) {
+        for(Student student:students){
+            if(student.getSTUDENTID()==id){
+                return student;
+            }
+        }
         return null;
     }
 
     @Override
     public Collection<Student> findAll() {
-        return null;
+        HashSet<Student> allStudents = new HashSet<>();
+        allStudents.addAll(students);
+        return allStudents;
     }
 
     @Override
     public boolean removeStudent(Student student) {
+        students.remove(student);
         return false;
     }
 
