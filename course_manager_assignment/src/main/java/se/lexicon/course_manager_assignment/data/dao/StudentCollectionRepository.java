@@ -24,7 +24,7 @@ public class StudentCollectionRepository implements StudentDao {
     @Override
     public Student createStudent(String name, String email, String address) {
         int STUDENTID = StudentSequencer.nextStudentId();
-        Student student = new Student(STUDENTID, name,email,address);
+        Student student = new Student(STUDENTID, name, email, address);
         return student;
     }
 
@@ -33,6 +33,8 @@ public class StudentCollectionRepository implements StudentDao {
         for(Student student:students){
             if(student.getEmail().equalsIgnoreCase(email)){
                 return student;
+            } else {
+                return null;
             }
         }
         return student;
@@ -49,6 +51,8 @@ public class StudentCollectionRepository implements StudentDao {
         for(Student student:students){
             if(student.getSTUDENTID()==id){
                 return student;
+            } else {
+                return null;
             }
         }
         return null;

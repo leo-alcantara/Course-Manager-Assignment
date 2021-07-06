@@ -31,32 +31,52 @@ public class CourseCollectionRepository implements CourseDao {
     @Override
     public Course findById(int id) {
         for (Course course : courses) {
-            if (course.getCOURSEID() == id) {
+            if (id == course.getCOURSEID()) {
                 return course;
+            } else {
+                return null;
             }
         }
-        return null;
+        return course;
     }
 
     @Override
     public Collection<Course> findByNameContains(String name) {
-        ArrayList<String> allCoursesNamesMatched = new ArrayList<>();
+        HashSet<Course> allCoursesNamesMatched = new HashSet<>();
         for(Course course : courses) {
                 if (name.contains(course.getCourseName())) {
-                    allCoursesNamesMatched.add(name);
+                    allCoursesNamesMatched.add(course);
+                } else {
+                    return null;
                 }
             }
-            return null;
+            return allCoursesNamesMatched;
     }
 
     @Override
     public Collection<Course> findByDateBefore(LocalDate end) {
-        return null;
+        HashSet<Course> allCoursesBeforeDate = new HashSet<>();
+        for(Course course : courses) {
+            if (end.isBefore(course.getStartDate())) {
+                allCoursesBeforeDate.add(course);
+            } else {
+                return null;
+            }
+        }
+        return allCoursesBeforeDate;
     }
 
     @Override
     public Collection<Course> findByDateAfter(LocalDate start) {
-        return null;
+        HashSet<Course> allCoursesAfterDate = new HashSet<>();
+        for(Course course : courses) {
+            if (start.isAfter(course.getStartDate())) {
+                allCoursesAfterDate.add(course);
+            } else {
+                return null;
+            }
+        }
+        return allCoursesAfterDate;
     }
 
     @Override
@@ -68,12 +88,15 @@ public class CourseCollectionRepository implements CourseDao {
 
     @Override
     public Collection<Course> findByStudentId(int studentId) {
+        HashSet<Course> courseFoundByStudentId = new HashSet<>();
         for (int i = 0; i < courses.size(); i++) {
             if (studentId == student.getSTUDENTID()) {
-                return courses;
+                courseFoundByStudentId.add(course);
+            } else {
+                return null;
             }
         }
-        return null;
+        return courseFoundByStudentId;
     }
 
     @Override
