@@ -8,6 +8,7 @@ import se.lexicon.course_manager_assignment.data.service.converter.Converters;
 import se.lexicon.course_manager_assignment.dto.forms.CreateCourseForm;
 import se.lexicon.course_manager_assignment.dto.forms.UpdateCourseForm;
 import se.lexicon.course_manager_assignment.dto.views.CourseView;
+import se.lexicon.course_manager_assignment.dto.views.StudentView;
 
 
 import java.time.LocalDate;
@@ -15,6 +16,8 @@ import java.util.List;
 
 @Service
 public class CourseManager implements CourseService {
+
+    CourseView courseView;
 
     private final CourseDao courseDao;
     private final StudentDao studentDao;

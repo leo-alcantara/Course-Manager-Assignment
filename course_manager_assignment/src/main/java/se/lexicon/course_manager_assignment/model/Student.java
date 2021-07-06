@@ -11,8 +11,8 @@ public class Student {
     String email;
     String address;
 
-    public Student(String name, String email, String address) {
-        this.STUDENTID = StudentSequencer.nextStudentId();
+    public Student(int STUDENTID, String name, String email, String address) {
+        this.STUDENTID = STUDENTID;
         this.name = name;
         this.email = email;
         this.address = address;
