@@ -3,8 +3,10 @@ package se.lexicon.course_manager_assignment.data.dao;
 
 
 import se.lexicon.course_manager_assignment.data.sequencers.StudentSequencer;
+import se.lexicon.course_manager_assignment.model.Course;
 import se.lexicon.course_manager_assignment.model.Student;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -33,7 +35,7 @@ public class StudentCollectionRepository implements StudentDao {
                 return student;
             }
         }
-        return null;
+        return student;
     }
 
     @Override

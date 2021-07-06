@@ -1,24 +1,21 @@
 package se.lexicon.course_manager_assignment.data.dao;
 
 
-
 import se.lexicon.course_manager_assignment.data.sequencers.CourseSequencer;
+import se.lexicon.course_manager_assignment.data.sequencers.StudentSequencer;
 import se.lexicon.course_manager_assignment.model.Course;
 import se.lexicon.course_manager_assignment.model.Student;
 
 import java.time.LocalDate;
-import java.util.Collection;
-import java.util.HashSet;
+import java.util.*;
 
 
-public class CourseCollectionRepository implements CourseDao{
+public class CourseCollectionRepository implements CourseDao {
 
-
-
-    private Collection<Course> courses;
     Course course;
     Student student;
 
+    private Collection<Course> courses;
 
     public CourseCollectionRepository(Collection<Course> courses) {
         this.courses = courses;
@@ -26,15 +23,15 @@ public class CourseCollectionRepository implements CourseDao{
 
     @Override
     public Course createCourse(String courseName, LocalDate startDate, int weekDuration) {
-        //Course course = new Course (courseName, startDate, weekDuration);
-        //final int COURSEID = CourseSequencer.nextCourseId();
-        return null;
+        int COURSEID = CourseSequencer.nextCourseId();
+        Course course = new Course(COURSEID, courseName, startDate, weekDuration, student);
+        return course;
     }
 
     @Override
     public Course findById(int id) {
-        for(Course course:courses){
-            if(course.getCOURSEID()==id){
+        for (Course course : courses) {
+            if (course.getCOURSEID() == id) {
                 return course;
             }
         }
@@ -43,8 +40,13 @@ public class CourseCollectionRepository implements CourseDao{
 
     @Override
     public Collection<Course> findByNameContains(String name) {
-        courses.contains(course.getCourseName());
-        return null;
+        ArrayList<String> allCoursesNamesMatched = new ArrayList<>();
+        for(Course course : courses) {
+                if (name.contains(course.getCourseName())) {
+                    allCoursesNamesMatched.add(name);
+                }
+            }
+            return null;
     }
 
     @Override
@@ -66,8 +68,8 @@ public class CourseCollectionRepository implements CourseDao{
 
     @Override
     public Collection<Course> findByStudentId(int studentId) {
-        for (int i = 0; i <courses.size(); i++) {
-            if(studentId == student.getSTUDENTID()){
+        for (int i = 0; i < courses.size(); i++) {
+            if (studentId == student.getSTUDENTID()) {
                 return courses;
             }
         }
