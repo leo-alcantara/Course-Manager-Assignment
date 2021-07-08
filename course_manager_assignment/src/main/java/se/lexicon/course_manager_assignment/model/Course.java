@@ -1,27 +1,22 @@
 package se.lexicon.course_manager_assignment.model;
 
-import se.lexicon.course_manager_assignment.data.sequencers.CourseSequencer;
-
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Objects;
 
 public class Course {
 
-    Collection<Student> students;
-
     private final int COURSEID;
     String courseName;
     LocalDate startDate;
     int weekDuration;
-    Student student;
+    Collection<Student> students;
 
-    public Course(int COURSEID, String courseName, LocalDate startDate, int weekDuration, Student student) {
+    public Course(int COURSEID, String courseName, LocalDate startDate, int weekDuration) {
         this.COURSEID = COURSEID;
         this.courseName = courseName;
         this.startDate = startDate;
         this.weekDuration = weekDuration;
-        this.student = student;
     }
 
     public int getCOURSEID() {
@@ -52,12 +47,12 @@ public class Course {
         this.weekDuration = weekDuration;
     }
 
-    public Student getStudent() {
-        return student;
+    public Collection<Student> getStudents() {
+        return students;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setStudents(Collection<Student> students) {
+        this.students = students;
     }
 
     public boolean enrollStudent(Student student) {
@@ -65,7 +60,7 @@ public class Course {
         return true;
     }
 
-    public boolean unenrollStudent(Student student) {
+    public boolean unrollStudent(Student student) {
         students.remove(student);
         return true;
     }
@@ -75,12 +70,12 @@ public class Course {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Course course = (Course) o;
-        return COURSEID == course.COURSEID && weekDuration == course.weekDuration && courseName.equals(course.courseName) && startDate.equals(course.startDate) && student.equals(course.student);
+        return COURSEID == course.COURSEID && weekDuration == course.weekDuration && courseName.equals(course.courseName) && startDate.equals(course.startDate) && students.equals(course.students);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(COURSEID, courseName, startDate, weekDuration, student);
+        return Objects.hash(COURSEID, courseName, startDate, weekDuration, students);
     }
 
     @Override
@@ -90,7 +85,9 @@ public class Course {
                 ", courseName='" + courseName + '\'' +
                 ", startDate=" + startDate +
                 ", weekDuration=" + weekDuration +
-                ", student=" + student +
+                ", students=" + students +
                 '}';
     }
+
+
 }

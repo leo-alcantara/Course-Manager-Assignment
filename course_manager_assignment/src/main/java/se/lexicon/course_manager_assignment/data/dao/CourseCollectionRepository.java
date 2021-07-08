@@ -24,7 +24,8 @@ public class CourseCollectionRepository implements CourseDao {
     @Override
     public Course createCourse(String courseName, LocalDate startDate, int weekDuration) {
         int COURSEID = CourseSequencer.nextCourseId();
-        Course course = new Course(COURSEID, courseName, startDate, weekDuration, student);
+        Course course = new Course(COURSEID, courseName, startDate, weekDuration);
+        courses.add(course);
         return course;
     }
 

@@ -14,7 +14,7 @@ import java.util.HashSet;
 
 public class StudentCollectionRepository implements StudentDao {
 
-    private Collection<Student> students;
+    private Collection<Student> students = new HashSet<>();
     Student student;
 
     public StudentCollectionRepository(Collection<Student> students) {
@@ -25,6 +25,7 @@ public class StudentCollectionRepository implements StudentDao {
     public Student createStudent(String name, String email, String address) {
         int STUDENTID = StudentSequencer.nextStudentId();
         Student student = new Student(STUDENTID, name, email, address);
+        students.add(student);
         return student;
     }
 
@@ -55,7 +56,7 @@ public class StudentCollectionRepository implements StudentDao {
                 return null;
             }
         }
-        return null;
+        return student;
     }
 
     @Override
