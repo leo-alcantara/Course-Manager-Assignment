@@ -15,7 +15,7 @@ import java.util.HashSet;
 public class StudentCollectionRepository implements StudentDao {
 
     private Collection<Student> students;
-    Student student;
+
 
     public StudentCollectionRepository(Collection<Student> students) {
         this.students = students;
@@ -34,11 +34,9 @@ public class StudentCollectionRepository implements StudentDao {
         for(Student student:students){
             if(student.getEmail().equalsIgnoreCase(email)){
                 return student;
-            } else {
-                return null;
             }
         }
-        return student;
+        return null;
     }
 
     @Override
@@ -47,8 +45,6 @@ public class StudentCollectionRepository implements StudentDao {
         for(Student student : students) {
             if (name.contains(student.getName())) {
                 allStudentNamesMatched.add(student);
-            } else {
-                return null;
             }
         }
         return allStudentNamesMatched;
@@ -59,11 +55,9 @@ public class StudentCollectionRepository implements StudentDao {
         for(Student student:students){
             if(student.getSTUDENTID()==id){
                 return student;
-            } else {
-                return null;
             }
         }
-        return student;
+        return null;
     }
 
     @Override

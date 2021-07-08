@@ -88,6 +88,6 @@ public class CourseManager implements CourseService {
 
     @Override
     public boolean deleteCourse(int id) {
-        return deleteCourse(id);
+        return courseDao.removeCourse(courseDao.findById(id));
     }
 }

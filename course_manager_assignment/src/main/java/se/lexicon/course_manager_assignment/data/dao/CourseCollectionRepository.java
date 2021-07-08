@@ -102,8 +102,7 @@ public class CourseCollectionRepository implements CourseDao {
 
     @Override
     public boolean removeCourse(Course course) {
-        courses.remove(course);
-        return false;
+        return courses.remove(course);
     }
 
     @Override

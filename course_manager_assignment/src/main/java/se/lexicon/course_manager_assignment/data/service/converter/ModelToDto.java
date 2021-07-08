@@ -13,15 +13,9 @@ import java.util.*;
 @Component
 public class ModelToDto implements Converters {
 
-    private Collection<Student> students;
-    public List<CourseView> allCourseView = new ArrayList<>();
-    public List<CourseView> allCoursesViews = new ArrayList<>();
-
-
     @Override
     public StudentView studentToStudentView(Student student) {
-        StudentView newStudentView = new StudentView(student.getSTUDENTID(), student.getName(), student.getEmail(), student.getAddress());
-        return newStudentView;
+        return new StudentView(student.getSTUDENTID(), student.getName(), student.getEmail(), student.getAddress());
     }
 
 
@@ -29,25 +23,21 @@ public class ModelToDto implements Converters {
     public CourseView courseToCourseView(Course course) {
         List<StudentView> allStudentsView = new ArrayList<>();
         for (Student student :
-                students) {
-            if(student.equals(student)){
+                course.getStudents()) {
                 studentToStudentView(student);
-            }
         }
-        CourseView newCourseView = new CourseView(course.getCOURSEID(), course.getCourseName(), course.getStartDate(),
+        //allCourseView.add(newCourseView);
+        return new CourseView(course.getCOURSEID(), course.getCourseName(), course.getStartDate(),
                 course.getWeekDuration(), allStudentsView);
-        allCourseView.add(newCourseView);
-        return newCourseView;
     }
 
 
     @Override
     public List<CourseView> coursesToCourseViews(Collection<Course> courses) {
+        List<CourseView> allCoursesViews = new ArrayList<>();
         for (Course course :
                 courses) {
-            if(course.equals(course)){
                 allCoursesViews.add(courseToCourseView(course));
-            }
         }
         return allCoursesViews;
     }
@@ -58,9 +48,7 @@ public class ModelToDto implements Converters {
         List<StudentView> allStudentsView = new ArrayList<>();
         for (Student student :
                 students) {
-            if(student.equals(student)){
                 allStudentsView.add(studentToStudentView(student));
-            }
         }
         return allStudentsView;
     }
