@@ -2,6 +2,7 @@ package se.lexicon.course_manager_assignment.model;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Objects;
 
 public class Course {
@@ -10,7 +11,7 @@ public class Course {
     String courseName;
     LocalDate startDate;
     int weekDuration;
-    Collection<Student> students;
+    Collection<Student> students = new HashSet<>();
 
     public Course(int COURSEID, String courseName, LocalDate startDate, int weekDuration) {
         this.COURSEID = COURSEID;

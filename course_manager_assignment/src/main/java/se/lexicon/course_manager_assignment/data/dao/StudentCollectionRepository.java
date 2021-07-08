@@ -14,7 +14,7 @@ import java.util.HashSet;
 
 public class StudentCollectionRepository implements StudentDao {
 
-    private Collection<Student> students = new HashSet<>();
+    private Collection<Student> students;
     Student student;
 
     public StudentCollectionRepository(Collection<Student> students) {
