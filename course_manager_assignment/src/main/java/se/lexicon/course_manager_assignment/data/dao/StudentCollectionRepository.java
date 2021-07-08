@@ -43,8 +43,15 @@ public class StudentCollectionRepository implements StudentDao {
 
     @Override
     public Collection<Student> findByNameContains(String name) {
-        students.contains(student.getName());
-        return null;
+        HashSet<Student> allStudentNamesMatched = new HashSet<>();
+        for(Student student : students) {
+            if (name.contains(student.getName())) {
+                allStudentNamesMatched.add(student);
+            } else {
+                return null;
+            }
+        }
+        return allStudentNamesMatched;
     }
 
     @Override
