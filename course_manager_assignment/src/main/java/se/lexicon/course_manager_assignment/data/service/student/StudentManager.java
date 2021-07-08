@@ -31,8 +31,11 @@ public class StudentManager implements StudentService {
         return converters.studentToStudentView(studentDao.createStudent(form.getName(), form.getEmail(), form.getAddress()));
     }
 
+
     @Override
     public StudentView update(UpdateStudentForm form) {
+        converters.studentToStudentView(studentDao.findById(form.getId()));
+
         return null;
     }
 
@@ -43,7 +46,6 @@ public class StudentManager implements StudentService {
 
     @Override
     public StudentView searchByEmail(String email) {
-
         return converters.studentToStudentView(studentDao.findByEmailIgnoreCase(email));
     }
 
