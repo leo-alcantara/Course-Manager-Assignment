@@ -34,8 +34,6 @@ public class CourseCollectionRepository implements CourseDao {
         for (Course course : courses) {
             if (id == course.getCOURSEID()) {
                 return course;
-            } else {
-                return null;
             }
         }
         return course;
@@ -47,8 +45,6 @@ public class CourseCollectionRepository implements CourseDao {
         for(Course course : courses) {
                 if (name.contains(course.getCourseName())) {
                     allCoursesNamesMatched.add(course);
-                } else {
-                    return null;
                 }
             }
             return allCoursesNamesMatched;
@@ -60,8 +56,6 @@ public class CourseCollectionRepository implements CourseDao {
         for(Course course : courses) {
             if (end.isBefore(course.getStartDate())) {
                 allCoursesBeforeDate.add(course);
-            } else {
-                return null;
             }
         }
         return allCoursesBeforeDate;
@@ -73,8 +67,6 @@ public class CourseCollectionRepository implements CourseDao {
         for(Course course : courses) {
             if (start.isAfter(course.getStartDate())) {
                 allCoursesAfterDate.add(course);
-            } else {
-                return null;
             }
         }
         return allCoursesAfterDate;
@@ -93,8 +85,6 @@ public class CourseCollectionRepository implements CourseDao {
         for (int i = 0; i < courses.size(); i++) {
             if (studentId == student.getSTUDENTID()) {
                 courseFoundByStudentId.add(course);
-            } else {
-                return null;
             }
         }
         return courseFoundByStudentId;
