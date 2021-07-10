@@ -39,18 +39,22 @@ public class CourseCollectionRepositoryTest {
     void createCourse() {
         //Arrange
         Course course;
-
         String expectedCourseName = "Java Advanced";
         LocalDate expectedStartingDate = LocalDate.parse("1970-01-01");
         int expectedWeekDuration = 5;
 
         //Act
         course = new Course(1, "Java Advanced", LocalDate.parse("1970-01-01"), 5);
-
+        String actualCourseName = course.getCourseName();
+        LocalDate actualStartDate = course.getStartDate();
+        int actualWeekDuration = course.getWeekDuration();
+        int actualCourseId = course.getCOURSEID();
         //Assert
-        assertEquals(expectedCourseName, course.getCourseName());
-        assertEquals(expectedStartingDate, course.getStartDate());
-        assertEquals(expectedWeekDuration, course.getWeekDuration());
+
+        assertEquals(1, actualCourseId);
+        assertEquals(expectedCourseName, actualCourseName);
+        assertEquals(expectedStartingDate, actualStartDate);
+        assertEquals(expectedWeekDuration, actualWeekDuration);
     }
 
     @Test
@@ -59,9 +63,10 @@ public class CourseCollectionRepositoryTest {
         Course course = new Course(1, "Java Advanced", LocalDate.parse("1970-01-01"), 5);
 
         //Act
-        int expectedCourseId = course.getCOURSEID();
+        int actualCourseId = course.getCOURSEID();
+        int expectedCourseId = 1;
         //Assert
-        assertEquals(1, expectedCourseId);
+        assertEquals(expectedCourseId, actualCourseId);
 
 
     }
