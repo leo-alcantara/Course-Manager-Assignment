@@ -1,13 +1,1 @@
-[ {
-  "courseName" : "Java",
-  "startDate" : "2021-10-10",
-  "weekDuration" : 6,
-  "students" : [ ],
-  "courseid" : 1
-}, {
-  "courseName" : "Java",
-  "startDate" : "2021-10-10",
-  "weekDuration" : 6,
-  "students" : [ ],
-  "courseid" : 2
-} ]
+[ ]

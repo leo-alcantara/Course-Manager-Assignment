@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Student {
 
-    private final int STUDENTID;
+    private int STUDENTID;
     String name;
     String email;
     String address;
@@ -17,6 +17,8 @@ public class Student {
         this.email = email;
         this.address = address;
     }
+
+    public Student(){}
 
     public int getSTUDENTID() {
         return STUDENTID;

@@ -7,6 +7,7 @@ import se.lexicon.course_manager_assignment.data.dao.StudentDao;
 import se.lexicon.course_manager_assignment.data.service.converter.Converters;
 import se.lexicon.course_manager_assignment.dto.forms.CreateCourseForm;
 import se.lexicon.course_manager_assignment.dto.forms.UpdateCourseForm;
+import se.lexicon.course_manager_assignment.dto.forms.UpdateStudentForm;
 import se.lexicon.course_manager_assignment.dto.views.CourseView;
 import se.lexicon.course_manager_assignment.dto.views.StudentView;
 import se.lexicon.course_manager_assignment.model.Course;
@@ -37,10 +38,15 @@ public class CourseManager implements CourseService {
         return converters.courseToCourseView(courseDao.createCourse(form.getCourseName(), form.getStartDate(), form.getWeekDuration()));
     }
 
-
     @Override
     public CourseView update(UpdateCourseForm form) {
-        return converters.courseToCourseView(courseDao.findById(form.getId()));
+        Course course = courseDao.findById(form.getId());
+        if(course != null){
+            course.setCourseName(form.getCourseName());
+            course.setStartDate(form.getStartDate());
+            course.setWeekDuration(form.getWeekDuration());
+        }
+        return converters.courseToCourseView(course);
     }
 
     @Override

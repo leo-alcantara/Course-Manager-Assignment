@@ -14,4 +14,8 @@ public class CourseSequencer {
     public static void setCourseSequencer(int courseSequencer) {
         CourseSequencer.courseSequencer = courseSequencer;
     }
+
+    public static void resetCourseSequencer(){
+        courseSequencer = 0;
+    }
 }

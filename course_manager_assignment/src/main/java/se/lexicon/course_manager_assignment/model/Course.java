@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class Course {
 
-    private final int COURSEID;
+    private int COURSEID;
     String courseName;
     LocalDate startDate;
     int weekDuration;
@@ -19,6 +19,8 @@ public class Course {
         this.startDate = startDate;
         this.weekDuration = weekDuration;
     }
+
+    public Course(){}
 
     public int getCOURSEID() {
         return COURSEID;
