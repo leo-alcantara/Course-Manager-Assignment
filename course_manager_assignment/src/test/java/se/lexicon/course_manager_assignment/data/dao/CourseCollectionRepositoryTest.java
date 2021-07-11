@@ -1,6 +1,7 @@
 package se.lexicon.course_manager_assignment.data.dao;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +32,13 @@ public class CourseCollectionRepositoryTest {
 
     //Write your tests here
 
-    Course course = new Course();
+    //Course course = new Course();
     Collection<Course> courses;
 
+    @BeforeEach
+    void before (){
+         CourseSequencer.resetCourseSequencer();
+    }
 
     @Test
     void createCourse() {
@@ -44,7 +49,7 @@ public class CourseCollectionRepositoryTest {
         int expectedWeekDuration = 5;
 
         //Act
-        course = new Course(1, "Java Advanced", LocalDate.parse("1970-01-01"), 5);
+        course = new Course(CourseSequencer.nextCourseId(), "Java Advanced", LocalDate.parse("1970-01-01"), 5);
         String actualCourseName = course.getCourseName();
         LocalDate actualStartDate = course.getStartDate();
         int actualWeekDuration = course.getWeekDuration();
@@ -168,6 +173,7 @@ public class CourseCollectionRepositoryTest {
     void tearDown() {
         testObject.clear();
         CourseSequencer.setCourseSequencer(0);
+
     }
 
 }
