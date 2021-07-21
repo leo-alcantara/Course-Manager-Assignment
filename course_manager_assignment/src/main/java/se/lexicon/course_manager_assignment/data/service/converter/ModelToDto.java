@@ -1,7 +1,7 @@
 package se.lexicon.course_manager_assignment.data.service.converter;
 
 import org.springframework.stereotype.Component;
-import se.lexicon.course_manager_assignment.data.sequencers.StudentSequencer;
+
 import se.lexicon.course_manager_assignment.dto.views.CourseView;
 import se.lexicon.course_manager_assignment.dto.views.StudentView;
 import se.lexicon.course_manager_assignment.model.Course;
@@ -26,10 +26,8 @@ public class ModelToDto implements Converters {
                course.getStudents()) {
                 allStudentsView.add(studentToStudentView(student));
         }
-        CourseView newCourseView = new CourseView(course.getCOURSEID(), course.getCourseName(), course.getStartDate(),
+        return new CourseView(course.getCOURSEID(), course.getCourseName(), course.getStartDate(),
                 course.getWeekDuration(), allStudentsView);
-        //allCourseView.add(newCourseView);
-        return newCourseView;
     }
 
 

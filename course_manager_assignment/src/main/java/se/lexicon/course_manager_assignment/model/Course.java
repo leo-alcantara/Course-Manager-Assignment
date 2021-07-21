@@ -59,13 +59,13 @@ public class Course {
     }
 
     public boolean enrollStudent(Student student) {
-        students.add(student);
-        return true;
+        return students.add(student);
+
     }
 
     public boolean unrollStudent(Student student) {
-        students.remove(student);
-        return true;
+        return students.remove(student);
+
     }
 
     @Override

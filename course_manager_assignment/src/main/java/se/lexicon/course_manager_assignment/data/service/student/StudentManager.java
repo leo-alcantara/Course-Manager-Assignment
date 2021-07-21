@@ -2,12 +2,14 @@ package se.lexicon.course_manager_assignment.data.service.student;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import se.lexicon.course_manager_assignment.data.dao.CourseCollectionRepository;
 import se.lexicon.course_manager_assignment.data.dao.CourseDao;
 import se.lexicon.course_manager_assignment.data.dao.StudentDao;
 import se.lexicon.course_manager_assignment.data.service.converter.Converters;
 import se.lexicon.course_manager_assignment.dto.forms.CreateStudentForm;
 import se.lexicon.course_manager_assignment.dto.forms.UpdateStudentForm;
 import se.lexicon.course_manager_assignment.dto.views.StudentView;
+import se.lexicon.course_manager_assignment.model.Course;
 import se.lexicon.course_manager_assignment.model.Student;
 
 
@@ -71,6 +73,13 @@ public class StudentManager implements StudentService {
 
     @Override
     public boolean deleteStudent(int id) {
+        for (Course course : courseDao.findByStudentId(id)) {
+            for (Student student : course.getStudents()) {
+                   course.unrollStudent(student);
+                }
+            }
         return studentDao.removeStudent(studentDao.findById(id));
     }
+
+
 }

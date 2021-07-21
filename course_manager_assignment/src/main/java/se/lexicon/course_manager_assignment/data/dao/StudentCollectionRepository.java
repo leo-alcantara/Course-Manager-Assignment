@@ -6,10 +6,7 @@ import se.lexicon.course_manager_assignment.data.sequencers.StudentSequencer;
 import se.lexicon.course_manager_assignment.model.Course;
 import se.lexicon.course_manager_assignment.model.Student;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
+import java.util.*;
 
 
 public class StudentCollectionRepository implements StudentDao {
@@ -32,7 +29,7 @@ public class StudentCollectionRepository implements StudentDao {
     @Override
     public Student findByEmailIgnoreCase(String email) {
         for(Student student:students){
-            if(student.getEmail().equalsIgnoreCase(email)){
+            if(student.getEmail().toLowerCase(Locale.ROOT).contains(email.trim().toLowerCase(Locale.ROOT))){
                 return student;
             }
         }
@@ -43,7 +40,7 @@ public class StudentCollectionRepository implements StudentDao {
     public Collection<Student> findByNameContains(String name) {
         HashSet<Student> allStudentNamesMatched = new HashSet<>();
         for(Student student : students) {
-            if (name.contains(student.getName())) {
+            if (student.getName().toLowerCase(Locale.ROOT).contains(name.trim().toLowerCase(Locale.ROOT))) {
                 allStudentNamesMatched.add(student);
             }
         }
@@ -53,7 +50,7 @@ public class StudentCollectionRepository implements StudentDao {
     @Override
     public Student findById(int id) {
         for(Student student:students){
-            if(student.getSTUDENTID()==id){
+            if(id == student.getSTUDENTID()){
                 return student;
             }
         }
@@ -69,8 +66,7 @@ public class StudentCollectionRepository implements StudentDao {
 
     @Override
     public boolean removeStudent(Student student) {
-        students.remove(student);
-        return false;
+        return students.remove(student);
     }
 
     @Override

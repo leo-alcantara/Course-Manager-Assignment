@@ -20,7 +20,7 @@ import java.util.List;
 @Service
 public class CourseManager implements CourseService {
 
-    CourseView courseView;
+
 
     private final CourseDao courseDao;
     private final StudentDao studentDao;
